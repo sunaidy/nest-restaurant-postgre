@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model client {
+  id    Int     @id @default(autoincrement())
+  name  String
+  email String  @unique
+  phone Int
+  age Int
+  client_restaurant client_restaurant[] @relation(map: "fk_client_id")
+}
+
+model client_restaurant {
+  id Int @id @default(autoincrement())
+  restaurant_id Int
+  client_id Int
+  Order order[] @relation(map: "fk_client_order_id")
+  client client? @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_id")
+  restaurant restaurant? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_restaurant_id")
+}
+
+model restaurant {
+  id Int @id @default(autoincrement())
+  address String
+  capacity Int
+  clients client_restaurant[]
+  Order order[] @relation(map: "fk_restaurant_id")
+}
+
+model order {
+   id Int @id @default(autoincrement())
+   description String
+   client_id Int
+   restaurant_id Int
+   client  client_restaurant? @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_order_id")
+   restaurant restaurant? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_restaurant_id")
+}
