@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -18,7 +19,9 @@ model client {
   name  String
   email String  @unique
   phone Int
-  age Int
+  age Int  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   client_restaurant client_restaurant[] @relation(map: "fk_client_id")
 }
 
@@ -26,6 +29,8 @@ model client_restaurant {
   id Int @id @default(autoincrement())
   restaurant_id Int
   client_id Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   Order order[] @relation(map: "fk_client_order_id")
   client client? @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_id")
   restaurant restaurant? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_restaurant_id")
@@ -35,6 +40,8 @@ model restaurant {
   id Int @id @default(autoincrement())
   address String
   capacity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   clients client_restaurant[]
   Order order[] @relation(map: "fk_restaurant_id")
 }
@@ -44,6 +51,8 @@ model order {
    description String
    client_id Int
    restaurant_id Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
    client  client_restaurant? @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_order_id")
    restaurant restaurant? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_restaurant_id")
 }

@@ -1,11 +1,11 @@
-version: '3.9'
+version: '3.8'
 
 services:
   db:
     image: postgres:latest
     container_name: nest_restaurant_backend
-    olumes:
-      - /tmp/postgres-data:/data/db
+    volumes:
+     - postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: developer
       POSTGRES_PASSWORD: develop*123
