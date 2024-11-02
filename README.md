@@ -32,19 +32,6 @@
 $ npm install
 ```
 
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
 ## Install and running the docker
 
 ```bash
@@ -59,3 +46,15 @@ $ docker-compose up -d
 $ npx prisma generate
 # generate bd
 $ npx prisma db push
+## Compile and run the project
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
