@@ -1,10 +1,10 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { ClientRestaurantService } from 'src/client_restaurant/client_restaurant.service';
+import { PrismaService } from '../prisma/prisma.service';
+import { ClientRestaurantService } from '../client_restaurant/client_restaurant.service';
 import { isNotEmpty } from 'class-validator';
 import { IRestaurant, IRestaurantList } from './interface/restaurant.interface';
-import { PaginationDto } from 'src/useful/dto/pagination.dto';
+import { PaginationDto } from '../useful/dto/pagination.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()
@@ -26,7 +26,7 @@ export class RestaurantService {
       const clients = [];
       if (isNotEmpty(createRestaurantDto.clients)) {
         for (const client_id of createRestaurantDto.clients) {
-          this.clientRestaurant.createClientRestaurant({
+          await this.clientRestaurant.createClientRestaurant({
             client_id: client_id,
             restaurant_id: restaurant.id,
           });
@@ -41,7 +41,7 @@ export class RestaurantService {
         clients: clients,
       };
     } catch (error) {
-      throw new BadRequestException('Failed to create restaurant' + error);
+      throw new BadRequestException('Failed to create restaurant. ' + error);
     }
   }
 

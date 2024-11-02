@@ -4,6 +4,7 @@ import { UpdateClientDto } from './dto/update-client.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { PaginationDto } from '../useful/dto/pagination.dto';
 import { IClient, IClientList } from './interface/client.interface';
+import { isEmpty } from 'class-validator';
 
 @Injectable()
 export class ClientService {
@@ -15,7 +16,7 @@ export class ClientService {
         data: createClientDto,
       });
     } catch (error) {
-      throw new BadRequestException('Failed to create client' + error);
+      throw new BadRequestException('Failed to create client. ' + error);
     }
   }
 
@@ -56,7 +57,7 @@ export class ClientService {
         },
       };
     } catch (error) {
-      throw new BadRequestException('Error to load list' + error);
+      throw new BadRequestException('Error to load list. ' + error);
     }
   }
 
@@ -75,7 +76,7 @@ export class ClientService {
         },
       });
     } catch (error) {
-      throw new BadRequestException('Error to load client' + error);
+      throw new BadRequestException('Error to load client. ' + error);
     }
   }
 
@@ -96,7 +97,19 @@ export class ClientService {
         where: { id: id },
       });
     } catch (error) {
-      throw new BadRequestException('Error to delete client ' + error);
+      throw new BadRequestException('Error to delete client. ' + error);
     }
+  }
+
+  async existClient(id: number): Promise<boolean> {
+    const cliente = await this.prismaService.client.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (isEmpty(cliente)) {
+      return false;
+    }
+    return true;
   }
 }

@@ -23,6 +23,7 @@ model client {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   client_restaurant client_restaurant[] @relation(map: "fk_client_id")
+  order order[] @relation(map: "fk_client_order_id")
 }
 
 model client_restaurant {
@@ -54,6 +55,7 @@ model order {
    restaurant_id Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-   client  client_restaurant? @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_order_id")
+   client  client? @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_order_id")
    restaurant restaurant? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_restaurant_id")
+  client_restaurant client_restaurant[] @relation(map: "fk_client_order_id")
 }
