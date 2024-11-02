@@ -25,6 +25,11 @@ export class RestaurantService {
       });
       const clients = [];
       if (isNotEmpty(createRestaurantDto.clients)) {
+        if (createRestaurantDto.clients.length > createRestaurantDto.capacity) {
+          throw new BadRequestException(
+            'The number of customers cannot exceed the capacity of the restaurant. ',
+          );
+        }
         for (const client_id of createRestaurantDto.clients) {
           await this.clientRestaurant.createClientRestaurant({
             client_id: client_id,

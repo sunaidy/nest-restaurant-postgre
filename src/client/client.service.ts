@@ -12,6 +12,9 @@ export class ClientService {
 
   async create(createClientDto: CreateClientDto): Promise<CreateClientDto> {
     try {
+      if (this.isAMinor(createClientDto.age)) {
+        throw new BadRequestException('The customer cannot be a minor. ');
+      }
       return await this.prismaService.client.create({
         data: createClientDto,
       });
@@ -82,6 +85,9 @@ export class ClientService {
 
   async update(id: number, updateClientDto: UpdateClientDto): Promise<IClient> {
     try {
+      if (!isEmpty(updateClientDto.age) && this.isAMinor(updateClientDto.age)) {
+        throw new BadRequestException('The customer cannot be a minor. ');
+      }
       return await this.prismaService.client.update({
         where: { id: id },
         data: updateClientDto,
@@ -108,6 +114,13 @@ export class ClientService {
       },
     });
     if (isEmpty(cliente)) {
+      return false;
+    }
+    return true;
+  }
+
+  isAMinor(age: number): boolean {
+    if (age > 18) {
       return false;
     }
     return true;
