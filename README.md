@@ -46,6 +46,8 @@ $ docker-compose up -d
 $ npx prisma generate
 # generate bd
 $ npx prisma db push
+```
+
 ## Compile and run the project
 
 ```bash
