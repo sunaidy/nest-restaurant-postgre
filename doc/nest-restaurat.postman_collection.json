@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "adc093fd-f8d3-4e5c-8c04-6c10341a6151",
+		"name": "nest-restaurat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19367949",
+		"_collection_link": "https://martian-trinity-963055.postman.co/workspace/restaurante~a400b486-9117-4eea-b683-d7173548aca4/collection/19367949-adc093fd-f8d3-4e5c-8c04-6c10341a6151?action=share&source=collection_link&creator=19367949"
+	},
+	"item": [
+		{
+			"name": "get client by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "{{base_url}}client/1",
+				"description": "Devuelve un cliente dado un identificador"
+			},
+			"response": []
+		},
+		{
+			"name": "get restaurant by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Delicias\",\n        \"address\": \"calle 88 entre 5 y 9\",\n        \"capacity\": 2,\n        \"clients\": [\n            {\n                \"name\": \"Daniel jose\",\n                \"email\": \"d@gmail.com\",\n                \"phone\": \"554499\",\n                \"age\": 20\n            },\n             {\n                \"name\": \"Jjose\",\n                \"email\": \"j@gmail.com\",\n                \"phone\": \"996688\",\n                \"age\": 80\n            }\n        ]\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}restaurant/15",
+				"description": "Devuelve un restaurante dado un identificador"
+			},
+			"response": []
+		},
+		{
+			"name": "get order by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "{{base_url}}order/64c4b038d5d5eb13d4a68bd3",
+				"description": "Devuelve un orden dado un identificador"
+			},
+			"response": []
+		},
+		{
+			"name": "remove client by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "{{base_url}}client/64c471fe71508901751935ad",
+				"description": "Elimina un cliente dado un identificador"
+			},
+			"response": []
+		},
+		{
+			"name": "remove restaurant",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "{{base_url}}restaurant/64c487e5de32fbab80ea4ca1",
+				"description": "Elimina un restaurante dado un identificador"
+			},
+			"response": []
+		},
+		{
+			"name": "remove order by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": "{{base_url}}order/64c4acdf0ab3b8ec5beae4cf",
+				"description": "Elimina una orden dado un identificador"
+			},
+			"response": []
+		},
+		{
+			"name": "update client",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "manuel",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "17",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{base_url}}client/1",
+				"description": "Actualiza un cliente y se le pasa por parametros los datos a modificar y el identificador del modelo."
+			},
+			"response": []
+		},
+		{
+			"name": "update restaurant",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Pamua\",\n    \"capacity\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}restaurant/6",
+				"description": "Actualiza un restaurante y se le pasa por parametros los datos a modificar y el identificador del modelo."
+			},
+			"response": []
+		},
+		{
+			"name": "update order",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Jamon \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}order/1",
+				"description": "Actualiza una orden y se le pasa por parametros los datos a modificar y el identificador del modelo."
+			},
+			"response": []
+		},
+		{
+			"name": "get list of clients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}client?take=10",
+					"host": [
+						"{{base_url}}client"
+					],
+					"query": [
+						{
+							"key": "take",
+							"value": "10"
+						},
+						{
+							"key": "skip",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "cursor",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Devuelve una lista con todos los clientes\n\ntake es la cantidad que se muestra por pag\n\nskip es el paso\n\ncursor es el elemento por el cual se va a comenzar\n\npage la pag actual"
+			},
+			"response": []
+		},
+		{
+			"name": "get list of restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}restaurant?take=10",
+					"host": [
+						"{{base_url}}restaurant"
+					],
+					"query": [
+						{
+							"key": "take",
+							"value": "10"
+						},
+						{
+							"key": "skip",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "cursor",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Devuelve una lista con todos los restaurantes"
+			},
+			"response": []
+		},
+		{
+			"name": "get list of orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}order?take=10",
+					"host": [
+						"{{base_url}}order"
+					],
+					"query": [
+						{
+							"key": "cursor",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "take",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Devuelve una lista con todos las ordenes"
+			},
+			"response": []
+		},
+		{
+			"name": "create client",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"name\" : \"Daniel jose\",\n                \"email\" : \"d696j@gmail.com\",\n                \"phone\" : 554499,\n                \"age\": 20\n            \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}client",
+				"description": "Crea un nuevo cliente ."
+			},
+			"response": []
+		},
+		{
+			"name": "create restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Delicias\",\n        \"address\": \"calle 88 entre 5 y 9\",\n        \"capacity\": 1,\n        \"clients\": [1]\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}restaurant",
+				"description": "Crea un nuevo restaurante ."
+			},
+			"response": []
+		},
+		{
+			"name": "create order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"description\": \"Perro caliente\",\n\"client_id\": 1,\n\"restaurant_id\": 12\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}order",
+				"description": "Crea una nueva orden ."
+			},
+			"response": []
+		}
+	]
+}
