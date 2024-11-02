@@ -4,7 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { ClientRestaurantService } from '../client_restaurant/client_restaurant.service';
 import { isNotEmpty } from 'class-validator';
 import { IRestaurant, IRestaurantList } from './interface/restaurant.interface';
-import { PaginationDto } from '../useful/dto/pagination.dto';
+import { PaginationDto } from '../pagination/dto/pagination.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()

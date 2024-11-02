@@ -3,7 +3,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { BadRequestException } from '@nestjs/common/exceptions';
-import { PaginationDto } from '../useful/dto/pagination.dto';
+import { PaginationDto } from '../pagination/dto/pagination.dto';
 import { ClientRestaurantService } from '../client_restaurant/client_restaurant.service';
 import { IOrder, IOrderList } from './interface/order.interface';
 import { isEmpty } from 'class-validator';

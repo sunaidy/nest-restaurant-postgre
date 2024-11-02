@@ -1,4 +1,4 @@
-import { IPagination } from '../../useful/interface/pagination.interface';
+import { IPagination } from '../../pagination/interface/pagination.interface';
 
 export interface IClient {
   id: number;

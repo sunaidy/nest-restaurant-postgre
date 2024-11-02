@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { PaginationDto } from '../useful/dto/pagination.dto';
+import { PaginationDto } from '../pagination/dto/pagination.dto';
 import { IClient, IClientList } from './interface/client.interface';
 import { isEmpty } from 'class-validator';
 

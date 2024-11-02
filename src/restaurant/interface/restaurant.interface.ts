@@ -1,4 +1,4 @@
-import { IPagination } from '../../useful/interface/pagination.interface';
+import { IPagination } from '../../pagination/interface/pagination.interface';
 import { IClient } from '../../client/interface/client.interface';
 
 export interface IRestaurant {
